@@ -72,6 +72,11 @@ model.add(Dense(1))
 model.compile(loss='mae', optimizer='adam')
 # fit network
 history = model.fit(train_X, train_y, epochs=50, batch_size=72, validation_data=(test_X, test_y), verbose=2, shuffle=False)
+# evaluate the model
+scores = model.evaluate(test_X, test_y)
+#print scores
+print("\n\n\t%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
+
 # plot history
 '''
 pyplot.plot(history.history['loss'], label='train')
